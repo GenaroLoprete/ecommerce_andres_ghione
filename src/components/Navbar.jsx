@@ -13,17 +13,19 @@ import {
   DropdownItem,
   Button,
 } from "reactstrap";
+import CartWidget from "./CartWidget";
 
-function Titulo() {
+function NavBar() {
   return (
     <div>
       <Navbar color="light" expand="md" light>
         <NavbarBrand href="/">TUTI-TIENDA</NavbarBrand>
+        <CartWidget />
         <NavbarToggler onClick={function noRefCheck() {}} />
         <Collapse navbar>
           <Nav className="me-auto" navbar>
-            <UncontrolledDropdown inNavbar nav>
-              <DropdownToggle caret nav className="px-5">
+            <UncontrolledDropdown inNavbar nav className="px-5">
+              <DropdownToggle caret nav>
                 Categorías
               </DropdownToggle>
               <DropdownMenu right>
@@ -43,7 +45,7 @@ function Titulo() {
             <NavItem className="px-1">
               <NavLink href="/ofertas/">Ver ofertas</NavLink>
             </NavItem>
-            <NavItem className="px-4">
+            <NavItem className="px-2">
               <NavLink href="/mas-vendido/">Lo más vendido</NavLink>
             </NavItem>
           </Nav>
@@ -56,4 +58,4 @@ function Titulo() {
   );
 }
 
-export default Titulo;
+export default NavBar;
