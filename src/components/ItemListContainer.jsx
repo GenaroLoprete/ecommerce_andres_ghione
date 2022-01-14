@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, CardGroup } from "reactstrap";
-import ProductCard from "./ProductCard";
 
 function ItemListContainer({ greeting, productos }) {
   return (
