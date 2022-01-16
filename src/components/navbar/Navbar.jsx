@@ -11,9 +11,9 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Button,
+  Button
 } from "reactstrap";
-import CartWidget from "./CartWidget";
+import CartWidget from "../cartWidget/CartWidget";
 
 function NavBar() {
   return (

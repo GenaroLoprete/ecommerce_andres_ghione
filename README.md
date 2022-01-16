@@ -8,6 +8,13 @@
 * [Github - Repository](https://github.com/AGO-90/ecommerce_andres_ghione)
 
 ### [Changes History]
+#### [15/01/2022]
+* Add itemCount.jsx
+* Add itemList.jsx
+* Add item.jsx
+* Add src/helpers/mock.js
+* Navbar & itemListContainer changes
+
 #### [14/01/2022]
 * Add CartWidget.jsx with awesome icon
 * Add ItemListContainer.jsx with greetings property for title

@@ -1,18 +1,10 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import ItemListContainer from "./components/ItemListContainer";
+import ItemListContainer from "./components/itemListContainer/ItemListContainer";
 
 function App() {
-  class Producto {
-    constructor(titulo, descripcion, imagen, precio) {
-      this.titulo = titulo;
-      this.descripcion = descripcion;
-      this.precio = precio;
-    }
-  }
-
   return (
     <div className="App">
       <Navbar />
