@@ -15,7 +15,7 @@ function ItemCount({initial, stock, onAdd}) {
     }
 
     const handlerIncrementQuantity = () => {
-        if (quantity + 1 <= stock) {
+        if (quantity <= stock) {
             setQuantity(quantity + 1)
         } else {
             setQuantity(quantity)
@@ -30,7 +30,7 @@ function ItemCount({initial, stock, onAdd}) {
     }
 
     const handlerDecrementQuantity = () => {
-        if (quantity - 1 >= initial) {
+        if (quantity >= initial) {
             handlerHidden(true)
             setQuantity(quantity - 1)
         } else {
