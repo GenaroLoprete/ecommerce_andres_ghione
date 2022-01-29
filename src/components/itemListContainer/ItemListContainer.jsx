@@ -11,7 +11,6 @@ function ItemListContainer({ greeting }) {
         obtainProducts.then(res => setProductsObtained(res))
             .catch(err=>console.log(err))
             .finally(()=>setLoading(false))
-        //setProductsObtained(res)
     }, [])
 
 

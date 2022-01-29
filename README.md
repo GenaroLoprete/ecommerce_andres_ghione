@@ -8,6 +8,11 @@
 * [Github - Repository](https://github.com/AGO-90/ecommerce_andres_ghione)
 
 ### [Changes History]
+#### [28/01/2022]
+* Fix if contidions - itemCount.jsx
+* Add itemDetailContainer.jsx
+* Add itemDetal.jsx
+
 #### [16/01/2022]
 * Fix if contidions - itemCount.jsx
 

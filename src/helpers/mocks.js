@@ -30,3 +30,9 @@ export const obtainProducts = new Promise((resolve, rejected) => {
         resolve(products)
     }, 3000)
 });
+
+export const getItems = new Promise((resolve) => {
+    setTimeout(() => {
+        resolve(product1)
+    }, 2000)
+});
