@@ -12,7 +12,7 @@ function App() {
             <div className="App">
                 <Navbar/>
                 <Routes>
-                    <Route exact path='/' element={<ItemListContainer greeting="Bienvenido a TUTI-TIENDA !"/>} />
+                    <Route exact path='/' element={<ItemListContainer greeting="Welcome to TUTI-TIENDA !"/>} />
                     <Route exact path='/category/:categoryID' element={<ItemListContainer greeting="Bienvenido a TUTI-TIENDA !"/>} />
                     <Route exact path='/category/:categoryID' element={<ItemListContainer greeting="Bienvenido a TUTI-TIENDA !"/>} />
                     <Route exact path='/category/:categoryID' element={<ItemListContainer greeting="Bienvenido a TUTI-TIENDA !" />} />

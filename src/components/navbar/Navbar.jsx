@@ -26,7 +26,7 @@ function NavBar() {
                     <Nav className="me-auto" navbar>
                         <UncontrolledDropdown inNavbar nav className="px-5">
                             <DropdownToggle caret nav>
-                                Categorías
+                                Categories
                             </DropdownToggle>
                             <DropdownMenu>
                                 <Link style={{ textDecoration: 'none' }} to="/category/1"> <DropdownItem>Home appliances</DropdownItem> </Link>
@@ -41,10 +41,10 @@ function NavBar() {
                     </Nav>
                     <div className="px-5">
                         <Button className='mx-2' color="primary">
-                            Carrito&nbsp;
+                            Cart&nbsp;
                             <CartWidget />
                         </Button>
-                        <Button color="primary">Ingresar</Button>
+                        <Button color="primary">Sign In</Button>
                     </div>
                 </Collapse>
             </Navbar>
