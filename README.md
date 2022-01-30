@@ -2,12 +2,35 @@
 
 ---
 
+## About TUTI-TIENDA
+
+TUTI-TIENDA is a page where various products will be sold. The different categories will grow over time.
+It is a simple page, with the general catalog and the view of products in different categories
+
+<strong>For testing purposes, data generated from Mockaroo was used.</strong>
+
+## Extra dependencies used
+
+* Fortawesome (svg-core, svg-icons, react-fontawesome)
+* Bootstrap
+* Bootstrap-icons
+* Reactstrap
+
 ### ReactJS project
 * Ecommerce store
 
 * [Github - Repository](https://github.com/AGO-90/ecommerce_andres_ghione)
 
 ### [Changes History]
+
+
+#### [29/01/2022]
+* Install react-router-dom
+* Add route logic
+* Add < Link > to SPA application
+* Fix errors
+* Update README.md
+
 #### [28/01/2022]
 * Fix if contidions - itemCount.jsx
 * Add itemDetailContainer.jsx

@@ -1,33 +1,34 @@
 import React from 'react';
 import {Badge, Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle} from "reactstrap";
 
-function ItemDetail(props, {title}) {
+function ItemDetail({product}) {
     return (
-        <Card className='mx-1 my-1 col-4'>
-            <CardImg
-                alt="Card image cap"
-                src={props.image}
-                top
-                width="100%"
-            />
-            <CardBody className='d-flex flex-column'>
-                <CardTitle tag="h5">
-                    {props.title}
-                </CardTitle>
-                <CardSubtitle
-                    className="text-muted"
-                    tag="h6"
-                >
-                    {props.subtitle}
-                </CardSubtitle>
-                <CardText className='mt-auto'>
-                    {props.description}
-                </CardText>
-                <Badge text color="primary" className='px-5 py-3 my-2'>
-                    U$S {props.amount}
-                </Badge>
-            </CardBody>
-        </Card>
+        <div className='offset-3 col-6'>
+            <Card className='mx-1 my-1 col-12'>
+                <CardImg
+                    alt="Card image cap"
+                    src={product.image}
+                    width="50%"
+                />
+                <CardBody className='d-flex flex-column'>
+                    <CardTitle tag="h5">
+                        {product.title}
+                    </CardTitle>
+                    <CardSubtitle
+                        className="text-muted"
+                        tag="h6"
+                    >
+                        {product.subtitle}
+                    </CardSubtitle>
+                    <CardText className='mt-auto'>
+                        {product.description}
+                    </CardText>
+                    <Badge text color="primary" className='px-5 py-3 my-2'>
+                        U$S {product.amount}
+                    </Badge>
+                </CardBody>
+            </Card>
+        </div>
     )
 }
 

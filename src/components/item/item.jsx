@@ -6,14 +6,14 @@ import {
     CardTitle,
     CardSubtitle,
     CardText,
-    Badge,
+    Badge, Button,
 } from "reactstrap";
 import ItemCount from "../itemCount/itemCount";
+import {Link} from "react-router-dom";
 
-function Item({title, subtitle, description, stock, amount, image, initial }) {
+function Item({id, title, subtitle, description, stock, amount, image, initial}) {
 
-    function onAdd(quantity){
-        //fetch para agregar articulo al carrito
+    function onAdd(quantity) {
         alert(`Se ha agregado al carrito el articulo ${title}, cantidad ${quantity}`)
     }
 
@@ -41,7 +41,12 @@ function Item({title, subtitle, description, stock, amount, image, initial }) {
                 <Badge text color="primary" className='px-5 py-3 my-2'>
                     U$S {amount}
                 </Badge>
-                <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
+                <Link className='my-2 mx-2' to={`/detail/${id}`}>
+                    <Button className='my-2 mx-2' color="secondary">
+                        Product details
+                    </Button>
+                </Link>
+                <ItemCount stock={stock} initial={initial} onAdd={onAdd}/>
             </CardBody>
         </Card>
     )

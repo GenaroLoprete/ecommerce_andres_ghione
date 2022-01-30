@@ -2,9 +2,15 @@ import {Alert, Button, ButtonGroup, Input} from "reactstrap";
 import React, {useEffect, useState} from "react";
 
 function ItemCount({initial, stock, onAdd}) {
-    const [quantity, setQuantity] = useState(initial)
+    const [quantity, setQuantity] = useState(0)
     const [hidden, setHidden] = useState(true)
     const [buyDisabled, setBuyDisabled] = useState(false)
+
+    useEffect(() => {
+        setQuantity(initial)
+        setHidden(true)
+        setBuyDisabled(false)
+    }, [initial, stock, onAdd])
 
     useEffect(() => {
         handlerBuyDisabled()
@@ -42,6 +48,10 @@ function ItemCount({initial, stock, onAdd}) {
         setHidden(val)
     }
 
+    function handleChangeQuantity() {
+
+    }
+
     return (
         <div className=''>
             <ButtonGroup>
@@ -51,18 +61,15 @@ function ItemCount({initial, stock, onAdd}) {
                 <Input className='text-center'
                        id="quantity"
                        name="quantity"
-                       placeholder="Quantity"
                        value={quantity}
+                       onChange={handleChangeQuantity}
                 />
                 <Button onClick={handlerIncrementQuantity}>
                     +
                 </Button>
             </ButtonGroup>
             <Button className={buyDisabled ? 'disabled my-2 mx-2' : 'my-2 mx-2'}   //'my-1 px-5 '
-                color="primary"
-                outline
-                    onClick={handlerAddItem}
-            >
+                color="primary" outline onClick={handlerAddItem} >
                 Add to cart
             </Button>
             <Alert color="danger" className={hidden ? 'invisible' : ''}>

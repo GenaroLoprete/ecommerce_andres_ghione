@@ -1,25 +1,25 @@
 import React, {useEffect, useState} from 'react';
-import {getItems} from "../../helpers/mocks";
+import {filterItem} from "../../helpers/mocks";
 import {Container, Spinner} from "reactstrap";
 import ItemDetail from "../itemDetail/itemDetail";
+import {useParams} from "react-router-dom";
 
 const ItemDetailContainer = () => {
-    const [product, setProduct] = useState('');
+    const [product, setProduct] = useState(null);
+
+    const {id} = useParams()
 
     useEffect(()=>{
-        getItems
-            .then(resp => setProduct(resp))
+        filterItem(id).then(resp => setProduct(resp[0]))
     }, []);
 
     return (
         <Container className="bg-light border" fluid>
-            <p className="my-5 h3"></p>
+            <p className="my-5 h3"/>
             <br />
             {
-                product === '' ?   <Spinner color="primary" type="border" /> : <ItemDetail title={product.title} subtitle={product.subtitle}
-                    description={product.description} amount={product.amount} image={product.image} />
+                product == null ? <Spinner color="primary" type="border" /> : <ItemDetail product = {product} />
             }
-
         </Container>
     )
 };
