@@ -40,10 +40,12 @@ function NavBar() {
                         </UncontrolledDropdown>
                     </Nav>
                     <div className="px-5">
-                        <Button className='mx-2' color="primary">
-                            Cart&nbsp;
-                            <CartWidget />
-                        </Button>
+                        <Link style={{ textDecoration: 'none' }} to="/cart">
+                            <Button className='mx-2' color="primary">
+                                Cart&nbsp;
+                                <CartWidget />
+                            </Button>
+                        </Link>
                         <Button color="primary">Sign In</Button>
                     </div>
                 </Collapse>
