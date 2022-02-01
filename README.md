@@ -31,6 +31,9 @@ It is a simple page, with the general catalog and the view of products in differ
 * Fix errors
 * Update README.md
 
+#### [31/01/2022]
+* Add recommendations - route for categories
+
 #### [28/01/2022]
 * Fix if contidions - itemCount.jsx
 * Add itemDetailContainer.jsx

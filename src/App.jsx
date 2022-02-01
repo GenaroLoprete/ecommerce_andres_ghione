@@ -14,12 +14,6 @@ function App() {
                 <Routes>
                     <Route exact path='/' element={<ItemListContainer greeting="Welcome to TUTI-TIENDA !"/>} />
                     <Route exact path='/category/:categoryID' element={<ItemListContainer greeting="Bienvenido a TUTI-TIENDA !"/>} />
-                    <Route exact path='/category/:categoryID' element={<ItemListContainer greeting="Bienvenido a TUTI-TIENDA !"/>} />
-                    <Route exact path='/category/:categoryID' element={<ItemListContainer greeting="Bienvenido a TUTI-TIENDA !" />} />
-                    <Route exact path='/category/:categoryID' element={<ItemListContainer greeting="Bienvenido a TUTI-TIENDA !" />} />
-                    <Route exact path='/category/:categoryID' element={<ItemListContainer greeting="Bienvenido a TUTI-TIENDA !" />} />
-                    <Route exact path='/category/:categoryID' element={<ItemListContainer greeting="Bienvenido a TUTI-TIENDA !" />} />
-                    <Route exact path='/category/:categoryID' element={<ItemListContainer greeting="Bienvenido a TUTI-TIENDA !" />} />
                     <Route exact path='/detail/:id' element={<ItemDetailContainer />} />
                 </Routes>
             </div>
