@@ -24,15 +24,20 @@ It is a simple page, with the general catalog and the view of products in differ
 ### [Changes History]
 
 
+#### [31/01/2022]
+* Add recommendations - route for categories
+* Add cart.js
+* Add goToCart.js
+* Add route to cart in App.js
+* Add selectedProduct and haveSelectedProduct states to itemDetail.js
+* Add SelectedProduct object in functions.js 
+
 #### [29/01/2022]
 * Install react-router-dom
 * Add route logic
 * Add < Link > to SPA application
 * Fix errors
 * Update README.md
-
-#### [31/01/2022]
-* Add recommendations - route for categories
 
 #### [28/01/2022]
 * Fix if contidions - itemCount.jsx
