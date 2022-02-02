@@ -23,6 +23,11 @@ It is a simple page, with the general catalog and the view of products in differ
 
 ### [Changes History]
 
+#### [01/02/2022]
+* Add Context to App.js
+* Add productsInCart - list products in cart in context
+* Add methods addItemToCart, removeItemFromCart, modifyQuantity, clear and isInCart
+* Update itemDetail - new onAdd method & useEffect to identify products already added
 
 #### [31/01/2022]
 * Add recommendations - route for categories

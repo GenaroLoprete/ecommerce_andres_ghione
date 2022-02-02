@@ -15,10 +15,9 @@ export const createContainerWithSpecificSize = (size, productsArray) => {
     return productsByComponentsTemp
 }
 
-export class SelectedProduct {
-    constructor(id, amount, quantity) {
+export class ProductToAdd {
+    constructor(id, quantity) {
         this.id = id;
-        this.amount = amount;
         this.quantity = quantity;
     }
 }

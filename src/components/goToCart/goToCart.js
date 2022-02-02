@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 const GoToCart = () => {
     return (
         <Link to='/cart'>
-            <Button className='my-2 mx-2'   //'my-1 px-5 '
+            <Button className='my-2 mx-2'
                 color="primary" outline >
                 Go to cart
             </Button>

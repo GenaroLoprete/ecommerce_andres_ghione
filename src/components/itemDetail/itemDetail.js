@@ -1,22 +1,25 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Badge, Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle} from "reactstrap";
-import {SelectedProduct} from "../../functions/funcions";
+import {ProductToAdd} from "../../functions/funcions";
 import ItemCount from "../itemCount/itemCount";
 import GoToCart from "../goToCart/goToCart";
+import {ContextApp} from "../../App";
 
 function ItemDetail({product}) {
-    const [selectedProduct, setSelectedProduct] = useState({})
     const [haveSelectedProduct, setHaveSelectedProduct] = useState(false)
-
-    function onAdd(quantity) {
-        setSelectedProduct(new SelectedProduct(product.id, product.amount, quantity))
-        setHaveSelectedProduct(true)
-    }
+    const { isInCart, addItemToCart } = useContext(ContextApp)
 
     useEffect(() => {
-        console.log('almacenado: ', selectedProduct)
-    }, [selectedProduct]);
+        let index = isInCart(product.id)
+        if(index > -1){
+            setHaveSelectedProduct(true)
+        }
+    })
 
+    function onAdd(quantity) {
+        addItemToCart(new ProductToAdd(product.id, quantity))
+        setHaveSelectedProduct(true)
+    }
 
     return (
         <div className='offset-3 col-6'>

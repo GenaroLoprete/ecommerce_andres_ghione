@@ -8,10 +8,9 @@ import {
     CardText,
     Badge, Button,
 } from "reactstrap";
-import ItemCount from "../itemCount/itemCount";
 import {Link} from "react-router-dom";
 
-function Item({id, title, subtitle, description, stock, amount, image, initial}) {
+function Item({id, title, subtitle, description, amount, image}) {
 
     function onAdd(quantity) {
         alert(`Se ha agregado al carrito el articulo ${title}, cantidad ${quantity}`)
@@ -46,7 +45,6 @@ function Item({id, title, subtitle, description, stock, amount, image, initial})
                         Product details
                     </Button>
                 </Link>
-                <ItemCount stock={stock} initial={initial} onAdd={onAdd}/>
             </CardBody>
         </Card>
     )
