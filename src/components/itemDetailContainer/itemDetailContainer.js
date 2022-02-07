@@ -11,7 +11,8 @@ const ItemDetailContainer = () => {
     const {id} = useParams()
 
     useEffect(()=>{
-        filterItem(id).then(resp => setProduct(resp[0]))
+        let resp = filterItem(id)
+        setProduct(resp[0])
     }, []);
 
     return (

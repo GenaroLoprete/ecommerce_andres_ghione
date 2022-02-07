@@ -13,13 +13,15 @@ import {
 } from "reactstrap";
 import CartWidget from "../cartWidget/CartWidget";
 import {Link} from "react-router-dom";
+import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function NavBar() {
     return (
         <div>
             <Navbar color="light" expand="md" light>
                 <Link style={{ textDecoration: 'none' }} to="/"><NavbarBrand>TUTI-TIENDA</NavbarBrand></Link>
-                <CartWidget/>
+                <FontAwesomeIcon icon={faShoppingBasket} />
                 <NavbarToggler onClick={function noRefCheck() {
                 }}/>
                 <Collapse navbar>

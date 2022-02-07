@@ -23,6 +23,15 @@ It is a simple page, with the general catalog and the view of products in differ
 
 ### [Changes History]
 
+#### [06/02/2022]
+* Add cartLine.js
+* Update cartWidget.js with items quantity
+* Add noItemsInCart.js
+* Fix and update functions.js
+
+#### [05/02/2022]
+* Fix removeItemFromCart method in app.jsx - Benjamin correction
+
 #### [01/02/2022]
 * Add Context to App.js
 * Add productsInCart - list products in cart in context

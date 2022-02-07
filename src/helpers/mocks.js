@@ -125,13 +125,11 @@ export const obtainProductsV2 = new Promise((resolve, rejected) => {
     }, 3000)
 });
 
-export const filterItem = (id) => new Promise((resolve) => {
+export const filterItem = (id) => {
     let list = addUndefinedProductsToProductsArray();
     let product = list.filter(element => element.id == id)
-    setTimeout(() => {
-        resolve(product)
-    }, 1000)
-})
+    return product
+}
 
 export const filterByCategory = (categoryID) => {
     let list = addUndefinedProductsToProductsArray();
