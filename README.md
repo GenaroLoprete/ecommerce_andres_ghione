@@ -23,6 +23,10 @@ It is a simple page, with the general catalog and the view of products in differ
 
 ### [Changes History]
 
+#### [11/02/2022]
+* Create firebase DB
+* Add DB connection
+
 #### [06/02/2022]
 * Add cartLine.js
 * Update cartWidget.js with items quantity

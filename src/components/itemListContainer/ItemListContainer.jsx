@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {Container, Spinner} from "reactstrap";
 import ItemList from "../itemList/itemList";
-import {filterByCategory, obtainProductsV2} from '../../helpers/mocks'
+import {filterByCategory} from '../../helpers/mocks'
 import {useParams} from "react-router-dom";
-import {createContainerWithSpecificSize} from "../../functions/funcions";
+import {createContainerWithSpecificSize, getAllProductsFromFirebase} from "../../functions/funcions";
 import img from '../../assets/bkgImg2.png';
+import {getDocs} from "firebase/firestore";
 
 function ItemListContainer({greeting}) {
     const [productsObtained, setProductsObtained] = useState([])
@@ -14,11 +15,14 @@ function ItemListContainer({greeting}) {
     const {categoryID} = useParams()
 
     useEffect(() => {
-        obtainProductsV2.then(res => {
-            setProductsObtained(res);
-        })
-            .catch(err => console.log(err))
-            .finally(() => setLoading(false))
+        setProductsObtained([])
+        getDocs(getAllProductsFromFirebase())
+            .then(resp => setProductsObtained(resp.docs.map(prod => (
+                {id: prod.id, ...prod.data()}
+            ))))
+            .finally(() => {
+                setLoading(false)
+            })
     }, [])
 
     useEffect(() => {

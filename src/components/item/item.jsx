@@ -12,10 +12,6 @@ import {Link} from "react-router-dom";
 
 function Item({id, title, subtitle, description, amount, image}) {
 
-    function onAdd(quantity) {
-        alert(`Se ha agregado al carrito el articulo ${title}, cantidad ${quantity}`)
-    }
-
     return (
         <Card className='mx-1 my-1'>
             <CardImg

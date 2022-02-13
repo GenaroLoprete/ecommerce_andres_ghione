@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {filterItem} from "../../helpers/mocks";
 import {Container, Spinner} from "reactstrap";
 import ItemDetail from "../itemDetail/itemDetail";
 import {useParams} from "react-router-dom";
 import img from '../../assets/bkgImg2.png';
+import {getProductByIDFromFirebase} from "../../functions/funcions";
+import {getDoc} from "firebase/firestore";
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null);
@@ -11,8 +12,8 @@ const ItemDetailContainer = () => {
     const {id} = useParams()
 
     useEffect(()=>{
-        let resp = filterItem(id)
-        setProduct(resp[0])
+        getDoc(getProductByIDFromFirebase(id))
+            .then(resp => (setProduct({id: resp.id, ...resp.data()})))
     }, []);
 
     return (

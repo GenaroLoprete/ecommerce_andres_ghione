@@ -12,22 +12,16 @@ export const Cart = () => {
 
     useEffect(() => {
         if(productsInCart.length > 0){
-            calculateTotal()
-            let products = printCartProductsDetails(productsInCart)
-            if (content.length !== products.length){
-                setContent(products)
-            }
+            printCartProductsDetails(productsInCart)
+                .then((products) => setContent(products))
+                .then(() => calculateTotal())
         }
-    });
+    }, [productsInCart]);
 
     const calculateTotal = () => {
-        let total = 0;
-        for (let i = 0; i < content.length; i++) {
-            total += content[i].total;
-        }
-        let format = formatTotal(total)
-        console.log(format)
-        setPrice(format)
+        let total = content.map((prod) => prod.total)
+        setPrice(formatTotal(total))
+        console.log('imprimiendo proce ', price)
     }
 
     const formatTotal = (total) => {
