@@ -1,22 +1,25 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Container, Spinner} from "reactstrap";
 import ItemList from "../itemList/itemList";
-import {filterByCategory} from '../../helpers/mocks'
 import {useParams} from "react-router-dom";
-import {createContainerWithSpecificSize, getAllProductsFromFirebase} from "../../functions/funcions";
+import {createContainerWithSpecificSize, getAllProductsFromFirebase, filterByCategory} from "../../functions/funcions";
 import img from '../../assets/bkgImg2.png';
-import {getDocs} from "firebase/firestore";
+import {collection, getDocs, getFirestore} from "firebase/firestore";
+import {ContextApp} from "../../App";
 
 function ItemListContainer({greeting}) {
     const [productsObtained, setProductsObtained] = useState([])
     const [loading, setLoading] = useState(true)
     const [productsByComponents, setProductsByComponents] = useState([])
+    const {productsInCart} = useContext(ContextApp)
 
     const {categoryID} = useParams()
 
     useEffect(() => {
         setProductsObtained([])
-        getDocs(getAllProductsFromFirebase())
+        const db = getFirestore()
+        let itemsCollection = collection(db, 'items')
+        getDocs(itemsCollection)
             .then(resp => setProductsObtained(resp.docs.map(prod => (
                 {id: prod.id, ...prod.data()}
             ))))
@@ -32,7 +35,7 @@ function ItemListContainer({greeting}) {
     const printComponents = () => {
         let productsObtainedCopy = productsObtained
         if(categoryID != undefined) {
-            let productsFiltered = filterByCategory(categoryID)
+            let productsFiltered = filterByCategory(categoryID, productsObtained)
             productsObtainedCopy = productsFiltered
         }
         let productsByComponentsTemp = createContainerWithSpecificSize(5, productsObtainedCopy)

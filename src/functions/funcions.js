@@ -1,4 +1,4 @@
-import {collection, doc, getDoc, getFirestore} from "firebase/firestore";
+import {doc, getDoc, getFirestore} from "firebase/firestore";
 
 export const createContainerWithSpecificSize = (size, productsArray) => {
     let productsCount = 0;
@@ -47,11 +47,6 @@ const getProductData = async (cartProduct) => {
                     resp.data().amount, (cartProduct.quantity * resp.data().amount)))
 }
 
-export const getAllProductsFromFirebase = () => {
-    const db = getFirestore()
-    return collection(db, 'items')
-}
-
 export const getProductByIDFromFirebase = (id) => {
     const db = getFirestore()
     return doc(db, 'items', id)
@@ -89,8 +84,40 @@ const addUndefinedProductsToProductsArray = (products) => {
     return productsList;
 }
 
-export const filterByCategory = (categoryID) => {
-    let list = addUndefinedProductsToProductsArray();
-    let filteredProducts = list.filter(product => product.category_id == categoryID);
+export const filterByCategory = (categoryID, products) => {
+    //let list = addUndefinedProductsToProductsArray(products);
+    let filteredProducts = products.filter(product => product.category_id == categoryID);
     return filteredProducts
 }
+
+export const calculatePrice = async (productsInCart) => {
+    let total = 0;
+    for (const product of productsInCart) {
+        let prod = await getProductData(product)
+        total += prod.price * prod.quantity
+    }
+    return formatTotal(total);
+}
+
+const formatTotal = (total) => {
+    let format = total.toString()
+    if (total>999 && total <= 9999) {
+        return format.charAt(0).concat('.', format.substring(1, format.length))
+    } else if (total>9999 && total <= 99999) {
+        return format.charAt(0).concat(format.charAt(1),'.', format.substring(2, format.length))
+    } else if (total>99999 && total <= 999999) {
+        return format.charAt(0).concat(format.charAt(1),format.charAt(2),'.', format.substring(3, format.length))
+    } else if (total>999999 && total <= 9999999){
+        return format.charAt(0).concat(format.charAt(1),format.charAt(2),format.charAt(3),'.', format.substring(4, format.length))
+    } else {
+        return format
+    }
+}
+
+// export const createProds = async () => {
+//     for (let i = 0; i < products.length; i++) {
+//         const db = getFirestore()
+//         const itemsCollection = collection(db, 'items')
+//         await addDoc(itemsCollection, products[i])
+//     }
+// }

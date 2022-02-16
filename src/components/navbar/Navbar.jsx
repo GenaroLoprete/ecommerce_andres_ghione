@@ -31,13 +31,10 @@ function NavBar() {
                                 Categories
                             </DropdownToggle>
                             <DropdownMenu>
-                                <Link style={{ textDecoration: 'none' }} to="/category/1"> <DropdownItem>Home appliances</DropdownItem> </Link>
-                                <Link style={{ textDecoration: 'none' }} to="/category/2"> <DropdownItem>Food</DropdownItem> </Link>
-                                <Link style={{ textDecoration: 'none' }} to="/category/3"> <DropdownItem>Electronics</DropdownItem> </Link>
-                                <Link style={{ textDecoration: 'none' }} to="/category/4"> <DropdownItem>Frozen</DropdownItem> </Link>
-                                <Link style={{ textDecoration: 'none' }} to="/category/5"> <DropdownItem>Cleaning</DropdownItem> </Link>
-                                <Link style={{ textDecoration: 'none' }} to="/category/6"> <DropdownItem>Drinks</DropdownItem> </Link>
-                                <Link style={{ textDecoration: 'none' }} to="/category/7"> <DropdownItem>Alcohol</DropdownItem> </Link>
+                                <Link style={{ textDecoration: 'none' }} to="/category/1"> <DropdownItem>Craft</DropdownItem> </Link>
+                                <Link style={{ textDecoration: 'none' }} to="/category/2"> <DropdownItem>National</DropdownItem> </Link>
+                                <Link style={{ textDecoration: 'none' }} to="/category/3"> <DropdownItem>International</DropdownItem> </Link>
+                                <Link style={{ textDecoration: 'none' }} to="/category/4"> <DropdownItem>Others</DropdownItem> </Link>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
