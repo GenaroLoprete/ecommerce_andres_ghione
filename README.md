@@ -23,6 +23,9 @@ It is a simple page, with the general catalog and the view of products in differ
 
 ### [Changes History]
 
+#### [16/02/2022]
+* Fix filter method and others bugs
+
 #### [11/02/2022]
 * Create firebase DB
 * Add DB connection
