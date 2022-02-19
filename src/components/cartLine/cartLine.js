@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Button} from "react-bootstrap";
 import {ContextApp} from "../../App";
-import {ProductToAdd} from "../../functions/funcions";
+import {ProductToAdd} from "../../functions/classes";
 
 const CartLine = ({item}) => {
     const {removeItemFromCart} = useContext(ContextApp)

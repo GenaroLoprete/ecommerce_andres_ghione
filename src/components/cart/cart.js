@@ -1,9 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Button, Table} from "react-bootstrap";
 import {ContextApp} from "../../App";
-import {calculatePrice, printCartProductsDetails} from "../../functions/funcions";
+import {calculatePrice, formatTotal, printCartProductsDetails} from "../../functions/funcions";
 import CartLine from "../cartLine/cartLine";
 import NoItemsInCart from "../noItemsInCart/NoItemsInCart";
+import {Link} from "react-router-dom";
 
 export const Cart = () => {
     const [content, setContent] = useState([])
@@ -11,7 +12,7 @@ export const Cart = () => {
     const {productsInCart} = useContext(ContextApp)
 
     useEffect(() => {
-        calculatePrice(productsInCart).then((price) => setPrice(price))
+        calculatePrice(productsInCart).then((price) => setPrice(formatTotal(price)))
         if(productsInCart.length > 0){
             printCartProductsDetails(productsInCart)
                 .then((products) => setContent(products))
@@ -52,7 +53,7 @@ export const Cart = () => {
                 </tbody>
             </Table>
             <div>
-                <Button color="success">To Pay - $ {price}</Button>
+                <Link to='/purchase'><Button color="success">To Pay - $ {price}</Button></Link>
             </div>
         </>
     );

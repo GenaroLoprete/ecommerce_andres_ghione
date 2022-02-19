@@ -23,6 +23,12 @@ It is a simple page, with the general catalog and the view of products in differ
 
 ### [Changes History]
 
+#### [19/02/2022]
+* Add purchaseForm.js
+* Add logic to create orders and return order ID
+* Add validations
+* Refactor code
+
 #### [16/02/2022]
 * Fix filter method and others bugs
 

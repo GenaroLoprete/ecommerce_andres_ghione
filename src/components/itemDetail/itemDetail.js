@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {Badge, Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle} from "reactstrap";
-import {ProductToAdd} from "../../functions/funcions";
 import ItemCount from "../itemCount/itemCount";
 import GoToCart from "../goToCart/goToCart";
 import {ContextApp} from "../../App";
+import {ProductToAdd} from "../../functions/classes";
 
 function ItemDetail({product}) {
     const [haveSelectedProduct, setHaveSelectedProduct] = useState(false)

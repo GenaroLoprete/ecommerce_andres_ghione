@@ -4,7 +4,7 @@ import ItemDetail from "../itemDetail/itemDetail";
 import {useParams} from "react-router-dom";
 import img from '../../assets/bkgImg2.png';
 import {getProductByIDFromFirebase} from "../../functions/funcions";
-import {getDoc} from "firebase/firestore";
+import {doc, getDoc, getFirestore} from "firebase/firestore";
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null);
@@ -12,7 +12,9 @@ const ItemDetailContainer = () => {
     const {id} = useParams()
 
     useEffect(()=>{
-        getDoc(getProductByIDFromFirebase(id))
+        const db = getFirestore()
+        let collection = doc(db, 'items', id)
+        getDoc(collection)
             .then(resp => (setProduct({id: resp.id, ...resp.data()})))
     }, []);
 

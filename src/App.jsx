@@ -7,6 +7,7 @@ import ItemListContainer from "./components/itemListContainer/ItemListContainer"
 import ItemDetailContainer from "./components/itemDetailContainer/itemDetailContainer";
 import Cart from "./components/cart/cart";
 import {createContext, useState} from "react";
+import PurchaseForm from "./components/purchaseForm/PurchaseForm";
 
 export const ContextApp = createContext("tutiApp")
 
@@ -61,6 +62,7 @@ function App() {
                                element={<ItemListContainer greeting="Bienvenido a TUTI-TIENDA !"/>}/>
                         <Route exact path='/detail/:id' element={<ItemDetailContainer/>}/>
                         <Route exact path='/cart' element={<Cart/>}/>
+                        <Route exact path='/purchase' element={<PurchaseForm />}/>
                     </Routes>
                 </div>
             </BrowserRouter>

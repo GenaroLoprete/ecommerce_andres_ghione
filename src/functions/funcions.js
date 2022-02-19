@@ -1,4 +1,5 @@
-import {doc, getDoc, getFirestore} from "firebase/firestore";
+import {collection, doc, getDoc, getDocs, getFirestore} from "firebase/firestore";
+import {PrintProductCart, Product} from "./classes";
 
 export const createContainerWithSpecificSize = (size, productsArray) => {
     let productsCount = 0;
@@ -18,13 +19,6 @@ export const createContainerWithSpecificSize = (size, productsArray) => {
         productsByComponentsTemp.push(productsList);
     }
     return productsByComponentsTemp
-}
-
-export class ProductToAdd {
-    constructor(id, quantity) {
-        this.id = id;
-        this.quantity = quantity;
-    }
 }
 
 export const printCartProductsDetails = async (cartProducts) => {
@@ -47,34 +41,6 @@ const getProductData = async (cartProduct) => {
                     resp.data().amount, (cartProduct.quantity * resp.data().amount)))
 }
 
-export const getProductByIDFromFirebase = (id) => {
-    const db = getFirestore()
-    return doc(db, 'items', id)
-}
-
-export class PrintProductCart {
-    constructor(id, quantity, title, description, price, total) {
-        this.id = id;
-        this.quantity = quantity;
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.total = total;
-    }
-}
-
-class Product {
-    constructor(id, title, subtitle, description, stock, amount, image) {
-        this.id = id
-        this.title = title;
-        this.subtitle = subtitle;
-        this.description = description;
-        this.stock = stock;
-        this.amount = amount;
-        this.image = image;
-    }
-}
-
 const addUndefinedProductsToProductsArray = (products) => {
     let productsList = [];
     products.forEach((productL) => {
@@ -85,7 +51,6 @@ const addUndefinedProductsToProductsArray = (products) => {
 }
 
 export const filterByCategory = (categoryID, products) => {
-    //let list = addUndefinedProductsToProductsArray(products);
     let filteredProducts = products.filter(product => product.category_id == categoryID);
     return filteredProducts
 }
@@ -96,10 +61,10 @@ export const calculatePrice = async (productsInCart) => {
         let prod = await getProductData(product)
         total += prod.price * prod.quantity
     }
-    return formatTotal(total);
+    return total;
 }
 
-const formatTotal = (total) => {
+export const formatTotal = (total) => {
     let format = total.toString()
     if (total>999 && total <= 9999) {
         return format.charAt(0).concat('.', format.substring(1, format.length))
@@ -114,10 +79,61 @@ const formatTotal = (total) => {
     }
 }
 
-// export const createProds = async () => {
-//     for (let i = 0; i < products.length; i++) {
-//         const db = getFirestore()
-//         const itemsCollection = collection(db, 'items')
-//         await addDoc(itemsCollection, products[i])
-//     }
-// }
+export function createBuyer(firstName, lastName, phone, email) {
+    const buyer = {}
+    buyer.name = firstName + ' ' + lastName
+    buyer.phone = phone
+    buyer.email = email
+    return buyer;
+}
+
+const formatProducts = (productsInCart) => {
+    let prods = []
+    productsInCart.forEach(prod => {
+        let product = {}
+        product.id = prod.id
+        product.quantity = prod.quantity
+        prods.push(product)
+    })
+    return prods
+}
+
+export function createOrder(buyer, total, productsInCart) {
+    const date = new Date();
+    const localDate = date.toLocaleDateString();
+    const order = {}
+    order.buyer = buyer
+    order.items = formatProducts(productsInCart)
+    order.date = localDate
+    order.total = total
+    return order;
+}
+
+export async function validateData(firstName, lastName, phone, email, products) {
+    if (firstName != undefined && firstName != null && firstName != "" &&
+        lastName != undefined && lastName != null && lastName != "" &&
+        phone != undefined && phone != null && phone != "" &&
+        email != undefined && email != null && email != "" && products.length > 0) {
+        let result = await checkStocks(products).then(r => r).finally()
+        if(result){
+            return true
+        }
+    }
+    return false;
+}
+
+export const checkStocks = async (products) => {
+    let result = true
+    const db = getFirestore()
+    for (const prod of products) {
+        let collection = doc(db, 'items', prod.id)
+        let prodResult;
+        await getDoc(collection)
+            .then(resp => prodResult = {id: resp.id, ...resp.data()})
+        if(prodResult.stock < prod.quantity){
+            result = false
+            break
+        }
+    }
+    return result
+}
